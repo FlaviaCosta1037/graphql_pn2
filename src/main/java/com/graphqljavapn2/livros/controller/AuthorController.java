@@ -43,9 +43,9 @@ public class AuthorController {
         }
     }
 
-    @GetMapping
-    public List<Author> findAllAuthor() {
-    List<Author> findAllAuthor = authorRepository.findAll();
-    return findAllAuthor;
-    }
+    // @GetMapping
+    // public List<Author> findAllAuthor() {
+    // List<Author> findAllAuthor = authorRepository.findAll();
+    // return findAllAuthor;
+    // }
 }

@@ -38,10 +38,10 @@ public class BookController {
         return new ResponseEntity<>(er, HttpStatus.OK);
     }
 
-    @GetMapping
-    public List<Book> findAllBook() {
-    List<Book> findAllBook = bookRepository.findAll();
-    return findAllBook;
-    }
+    // @GetMapping
+    // public List<Book> findAllBook() {
+    // List<Book> findAllBook = bookRepository.findAll();
+    // return findAllBook;
+    // }
 
 }

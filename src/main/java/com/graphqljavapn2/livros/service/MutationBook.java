@@ -16,10 +16,11 @@ public class MutationBook implements DataFetcher<Boolean> {
     private BookRepository bookRepository;
 
     public Boolean get(DataFetchingEnvironment environment)  throws Exception{
-        if(!bookRepository.findById(environment.getArgument("id")).isPresent()){
+        Long id = Long.parseLong(environment.getArgument("id").toString());
+        if(!bookRepository.findById(id).isPresent()){
             return false;
         }
-        bookRepository.deleteById(environment.getArgument("id"));
+        bookRepository.deleteById(id);
         return true;
     }
 }
