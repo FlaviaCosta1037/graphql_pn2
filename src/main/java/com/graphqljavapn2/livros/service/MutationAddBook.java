@@ -26,13 +26,13 @@ public class MutationAddBook implements DataFetcher<Book> {
             Optional<Book> bookAd = bookRepository.findById(id);
             if (bookAd.isPresent()) {
                 bookAd.get().setName(input.get("name").toString());
-                bookAd.get().setPageCount(0);
+                bookAd.get().setPageCount(Integer.parseInt(input.get("pageCount").toString()));
                 return bookRepository.save(bookAd.get());
             }
         }
         Book book = new Book();
         book.setName(input.get("name").toString());
-        book.setPageCount(0);
+        book.setPageCount(Integer.parseInt(input.get("pageCount").toString()));
         return bookRepository.save(book);
 
     }

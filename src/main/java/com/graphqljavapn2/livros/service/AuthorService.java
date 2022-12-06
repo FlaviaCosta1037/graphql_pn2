@@ -35,6 +35,9 @@ public class AuthorService {
     @Autowired
     private MutationAuthor mutationAuthor;
 
+    @Autowired
+    private MutationAddAuthor mutationAddAuthor;
+
     @PostConstruct
     private void getSchema() throws IOException {
         TypeDefinitionRegistry typeDefinitionRegistry = new SchemaParser().parse(resource.getFile());
@@ -43,7 +46,7 @@ public class AuthorService {
                         .dataFetcher("findAllAuthor", fetchFindAllAuthor)
                         .dataFetcher("findByIdAuthor", fetchFindByIdAuthor))
                 .type("Mutation", typeWiring-> typeWiring
-                        .dataFetcher("addAuthor", mutationAuthor)
+                        .dataFetcher("addAuthor", mutationAddAuthor)
                         .dataFetcher("deleteAuthor", mutationAuthor))        
                 .build();
         GraphQLSchema graphQLSchema = new SchemaGenerator().makeExecutableSchema(typeDefinitionRegistry, runtimeWiring);

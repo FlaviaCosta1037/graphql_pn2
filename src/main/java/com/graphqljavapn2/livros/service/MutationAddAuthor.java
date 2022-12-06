@@ -31,7 +31,7 @@ public class MutationAddAuthor implements DataFetcher<Author> {
             }
         }
         Author author = new Author();
-        author.setFirstName(input.get("name").toString());
+        author.setFirstName(input.get("firstName").toString());
         author.setLastName(input.get("lastName").toString());
         return authorRepository.save(author);
 

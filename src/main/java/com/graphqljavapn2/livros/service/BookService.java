@@ -34,6 +34,9 @@ public class BookService {
     @Autowired
     private MutationBook mutationBook;
 
+    @Autowired
+    private MutationAddBook mutationAddBook;
+
     @PostConstruct
     private void getSchema() throws IOException {
         TypeDefinitionRegistry typeDefinitionRegistry = new SchemaParser().parse(resource.getFile());
@@ -42,7 +45,7 @@ public class BookService {
                         .dataFetcher("findAllBook", fetchFindAllBook)
                         .dataFetcher("findByIdBook", fetchFindByIdBook))
                 .type("Mutation", typeWiring-> typeWiring
-                        .dataFetcher("addBook", mutationBook)
+                        .dataFetcher("addBook", mutationAddBook)
                         .dataFetcher("deleteBook", mutationBook))        
                 .build();
         GraphQLSchema graphQLSchema = new SchemaGenerator().makeExecutableSchema(typeDefinitionRegistry, runtimeWiring);
